@@ -1,0 +1,13 @@
+<div class="container mt-5">
+  <div class="card">
+    <div class="card-body">
+      <h1 class="card-title"><%= @job.title %></h1>
+      <p class="card-text"><strong>Company:</strong> <%= @job.company_name %></p>
+      <p class="card-text"><strong>Location:</strong> <%= @job.location %></p>
+      <p class="card-text"><strong>Type:</strong> <%= @job.job_type %></p>
+      <p class="card-text"><strong>Description:</strong></p>
+      <p class="card-text"><%= @job.description %></p>
+      <%= link_to '<- Back', jobs_path, class: "btn btn-info mt-3" %>
+    </div>
+  </div>
+</div>
