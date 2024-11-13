@@ -7,7 +7,14 @@
       <p class="card-text"><strong>Type:</strong> <%= @job.job_type %></p>
       <p class="card-text"><strong>Description:</strong></p>
       <p class="card-text"><%= @job.description %></p>
-      <%= link_to '<- Back', jobs_path, class: "btn btn-info mt-3" %>
+      <%= form_with url: apply_job_path(@job), remote: true, data: {turbo_method: :post} do |f| %>
+        <div class="mb-3">
+          <%= f.label :email, "Enter your email to apply:", class: "form-label" %>
+          <%= f.email_field :email, class: "form-control", required: true %>
+        </div>
+        <%= f.submit "Apply for this job", class: "btn btn-warning" %>
+      <% end %>
     </div>
   </div>
+</div>
 </div>
