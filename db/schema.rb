@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_11_13_021729) do
+ActiveRecord::Schema[7.2].define(version: 2024_11_13_021755) do
   create_table "companies", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
@@ -19,11 +19,14 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_13_021729) do
 
   create_table "jobs", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "title"
-    t.string "company_name"
+    t.bigint "company_id", null: false
     t.string "location"
     t.string "job_type"
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_jobs_on_company_id"
   end
+
+  add_foreign_key "jobs", "companies"
 end

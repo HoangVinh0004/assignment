@@ -6,7 +6,7 @@ class Job < ApplicationRecord
   belongs_to :company, optional: true
 
   validates :title, presence: true, length: { maximum: 200 }
-  validates :company_name, presence: true
+  validates :company_id, presence: true
   validates :location, presence: true
   validates :job_type, presence: true
   validates :description, presence: true

@@ -1,18 +1,24 @@
-<div class="container mt-5">
-  <div class="card">
+<div class="container m-5">
+  <%= link_to '<- Back to Jobs', jobs_path, class: "btn btn-primary" %>
+  <div class="card mt-4">
     <div class="card-body">
-      <h1 class="card-title"><%= @job.title %></h1>
-      <p class="card-text"><strong>Company:</strong> <%= @job.company_name %></p>
-      <p class="card-text"><strong>Location:</strong> <%= @job.location %></p>
-      <p class="card-text"><strong>Type:</strong> <%= @job.job_type %></p>
-      <p class="card-text"><strong>Description:</strong></p>
+      <h1 class="card-title text-center"><%= @job.title %></h1>
+      <p class="card-text"><strong>- Company:</strong> <%= @job.company.name %></p>
+      <p class="card-text"><strong>- Location:</strong> <%= @job.location %></p>
+      <p class="card-text"><strong>- Type:</strong> <%= @job.job_type %></p>
+      <p class="card-text"><strong>- Description:</strong></p>
       <p class="card-text"><%= @job.description %></p>
+    </div>
+  </div>
+  <div class="card mt-4">
+    <div class="card-body bg-secondary-subtle">
+      <p class="card-title">Apply now</p>
       <%= form_with url: apply_job_path(@job), remote: true, data: {turbo_method: :post} do |f| %>
         <div class="mb-3">
           <%= f.label :email, "Enter your email to apply:", class: "form-label" %>
           <%= f.email_field :email, class: "form-control", required: true %>
         </div>
-        <%= f.submit "Apply for this job", class: "btn btn-warning" %>
+        <%= f.submit "Apply for this job", class: "btn btn-warning w-100" %>
       <% end %>
     </div>
   </div>

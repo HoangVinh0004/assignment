@@ -4,10 +4,10 @@ namespace :job do
     require "csv"
     csv_path = Rails.root.join("lib", "assets", args[:filename] || "data.csv")
     CSV.foreach(csv_path, headers: true, col_sep: ";") do |row|
-      Company.create!(name: row["company_name"])
+      company = Company.create!(name: row["company_name"])
       Job.create!(
         title: row["title"],
-        company_name: row["company_name"],
+        company: company,
         location: row["location"],
         job_type: row["job_type"],
         description: row["description"]
