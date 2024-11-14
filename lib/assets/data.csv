@@ -1,5 +1,21 @@
-company_name;title;location;job_type;description
-ABC ;it;hanoi;freelance;asdasdasd asd
-DEF;hr;hcm;full_time;asdasasd asda sddasd asd
-ABC 2;sale;lam_dong;part_time;asdgawe a asda
-DEF 3;manager;hanoi;full_time;nfh h hdsh
+title;company_name;job_type;description;province;district;street
+Software Engineer;Tech Corp;3;Developing software applications;Province A;District X;123 Tech Street
+Data Analyst;Data Inc;1;Analyzing company data;Province B;District Y;456 Data Avenue
+Frontend Developer;Web Solutions;3;Creating web pages and user interfaces;Province C;District Z;789 Web Road
+Backend Developer;Backend Ltd;3;Developing server-side logic and database integration;Province D;District X;101 Backend Lane
+Project Manager;Build It;2;Managing projects and teams;Province A;District Y;202 Project Blvd
+Product Manager;Innovative Inc;3;Leading product development;Province B;District Z;303 Product St.
+UX/UI Designer;Creative Co.;1;Designing user-friendly interfaces;Province C;District X;404 Design Park
+DevOps Engineer;Cloud Systems;3;Managing cloud infrastructure;Province D;District Y;505 Cloud Ave
+Quality Assurance Tester;Test Now;1;Testing software for bugs and issues;Province A;District Z;606 Test Rd.
+HR Manager;People First;2;Managing human resources and recruitment;Province B;District X;707 HR Plaza
+Marketing Specialist;Market It;2;Creating and managing marketing campaigns;Province C;District Y;808 Market St.
+SEO Specialist;SEO Co.;1;Optimizing websites for search engines;Province D;District Z;909 SEO Way
+Business Analyst;Business Pros;2;Analyzing business processes and improving efficiency;Province A;District X;101 Business Park
+Content Writer;Content Creators;1;Writing articles and blog posts;Province B;District Y;202 Content Blvd
+Graphic Designer;Design Studio;1;Creating visual content for marketing;Province C;District Z;303 Graphic Ave
+Software Tester;Test Experts;1;Automating and executing software tests;Province D;District X;404 Test St.
+Security Engineer;Secure IT;3;Ensuring software and systems are secure;Province A;District Y;505 Secure Rd.
+Database Administrator;DB Experts;3;Managing and optimizing databases;Province B;District Z;606 DB Way
+Network Engineer;Net Solutions;3;Setting up and managing network systems;Province C;District X;707 Network Blvd
+Customer Support Specialist;Help Desk;2;Providing support for customers;Province D;District Y;808 Support Rd.

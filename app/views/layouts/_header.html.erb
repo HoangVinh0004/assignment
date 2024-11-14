@@ -1,15 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-info-subtle">
+<nav class="container navbar navbar-expand-lg navbar-light bg-info-subtle">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">FindJob</a>
+    <%= link_to "FindJob", root_path, class: "navbar-brand" %>
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ">
         <li class="nav-item">
-          <%= link_to "Home", login_path, class: "nav-link", data: { turbo_method: 'post' } %>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Help</a>
+          <%= link_to "Home", root_path, class: "nav-link" %>
         </li>
         <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to "Upload", upload_admin_jobs_path, class: "nav-link" %>
+          </li>
           <li class="nav-item">
             <%= link_to 'Logout', logout_path, data: { turbo_method: 'delete' }, class: "nav-link" %>
           </li>

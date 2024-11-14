@@ -12,6 +12,7 @@ Rails.application.routes.draw do
         patch :publish
       end
       collection do
+        get :upload
         post :import
       end
     end

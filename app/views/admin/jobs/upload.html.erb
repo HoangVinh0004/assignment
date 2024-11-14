@@ -1,0 +1,16 @@
+<% provide(:title, "Upload") %>
+<div class="container m-auto">
+  <%= link_to '<- Back to Jobs', jobs_path, class: "btn btn-primary" %>
+  <div class="card mt-4">
+    <div class="card-body">
+      <h1 class="card-title text-center">Upload file CSV</h1>
+      <%= form_with url: import_admin_jobs_path, local: true, multipart: true do |f| %>
+        <div class="form-group mb-3">
+          <%= f.label :file, "Upload CSV file", class: "form-label " %>
+          <%= f.file_field :file, class: "form-control" %>
+        </div>
+        <%= f.submit "Upload and Import", class: "btn btn-primary mb-3" %>
+      <% end %>
+    </div>
+  </div>
+</div>
