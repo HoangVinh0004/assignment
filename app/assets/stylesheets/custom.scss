@@ -1,0 +1,48 @@
+/* pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  list-style: none;
+  margin-bottom: 1rem;
+
+  a,
+  span {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    border: 1px solid #dee2e6;
+    color: #007bff;
+    text-decoration: none;
+    margin: 0 2px;
+    border-radius: 0.25rem;
+    transition: background-color 0.15s, color 0.15s;
+
+    &:hover {
+      background-color: #e9ecef;
+      color: #0056b3;
+    }
+  }
+
+  .current {
+    display: inline-block;
+    padding: 0.5rem 0.75rem;
+    background-color: #007bff;
+    color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 0.25rem;
+    cursor: default;
+    text-align: center;
+  }
+
+  .previous_page,
+  .next_page {
+    font-weight: bold;
+  }
+
+  .disabled {
+    color: #6c757d;
+    pointer-events: none;
+    background-color: #fff;
+    border-color: #dee2e6;
+  }
+}

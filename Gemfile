@@ -1,4 +1,8 @@
 source "https://rubygems.org"
+
+# Load file  file -- sassc
+gem "sassc-rails"
+gem "will_paginate", ">= 4.0.0"
 # cvs
 gem "csv"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

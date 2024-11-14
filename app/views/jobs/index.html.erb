@@ -1,3 +1,4 @@
+<% provide(:title, "Search") %>
 <div class="container mt-5">
   <h1 class="text-center mb-4">Recruitment page</h1>
   <div class="card mb-4">
@@ -21,20 +22,8 @@
     </div>
   </div>
   <div class="search-result m-4">
-    <h2> <%= pluralize(@jobs.size, 'result')%> </h2>
+    <h2> <%= pluralize(@jobs.total_entries, 'result')%> </h2>
   </div>
-  <% @jobs.each do |job| %>
-    <div class="card mb-3">
-      <div class="card-body">
-        <h3 class="card-title border-bottom shadow-sm">
-          <%= link_to job.title, job_path(job), class: "text-decoration-none text-dark" %>
-        </h3>
-        <p class="card-text"><strong>- Company:</strong> <%= job.company.name %></p>
-        <p class="card-text"><strong>- Location:</strong> <%= job.location %></p>
-        <p class="card-text"><strong>- Type:</strong> <%= job.job_type %></p>
-        <p class="card-text text-secondary">Posted: <%= time_ago_in_words(job.created_at)%>  ago </p>
-        <%= link_to 'View Details', job_path(job), class: "btn btn-outline-primary" %>
-      </div>
-    </div>
-  <% end %>
+  <%= will_paginate @jobs, class: 'pagination'%>
+  <%= render partial: "shared/job", collection: @jobs, as: :job %>
 </div>

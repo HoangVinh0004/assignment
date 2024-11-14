@@ -1,3 +1,4 @@
+<% provide(:title, "Job detail") %>
 <div class="container m-5">
   <%= link_to '<- Back to Jobs', jobs_path, class: "btn btn-primary" %>
   <div class="card mt-4">
@@ -8,12 +9,13 @@
       <p class="card-text"><strong>- Type:</strong> <%= @job.job_type %></p>
       <p class="card-text"><strong>- Description:</strong></p>
       <p class="card-text"><%= @job.description %></p>
+      <p class="card-text text-secondary">Posted: <%= time_ago_in_words(@job.created_at)%>  ago </p>
     </div>
   </div>
   <div class="card mt-4">
     <div class="card-body bg-secondary-subtle">
-      <p class="card-title">Apply now</p>
-      <%= form_with url: apply_job_path(@job), remote: true, data: {turbo_method: :post} do |f| %>
+      <h4 class="card-title text-center"> Apply now </h4>
+      <%= form_with url: apply_job_path(@job), local: true, data: {turbo: false} do |f| %>
         <div class="mb-3">
           <%= f.label :email, "Enter your email to apply:", class: "form-label" %>
           <%= f.email_field :email, class: "form-control", required: true %>

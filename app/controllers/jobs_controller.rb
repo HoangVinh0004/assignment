@@ -2,7 +2,7 @@ class JobsController < ApplicationController
   def index
     @job_types = Job::JOB_TYPES
     puts " title : #{params[:title]}  =  type : #{params[:title]}"
-    @jobs = Job.search(params[:title], params[:job_type])
+    @jobs = Job.search(params[:title], params[:job_type]).paginate(page: params[:page], per_page: 3)
   end
 
   def show
@@ -15,16 +15,9 @@ class JobsController < ApplicationController
     if email.present?
       UserMailer.apply_job(@job, email).deliver_now
       flash[:success] = "Application sent to #{email}!"
-      respond_to do |format|
-        format.html { redirect_to @job }
-        format.js
-      end
     else
       flash[:danger] = "Please enter a valid email address."
-      respond_to do |format|
-        format.html { redirect_to @job }
-        format.js
-      end
     end
+    redirect_to @job
   end
 end
