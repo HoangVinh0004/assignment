@@ -8,5 +8,8 @@
     <p class="card-text"><strong>- Type:</strong> <%= job.job_type %></p>
     <p class="card-text text-secondary">Posted: <%= time_ago_in_words(job.created_at)%>  ago </p>
     <%= link_to 'View Details', job_path(job), class: "btn btn-outline-primary" %>
+    <% if current_user&.admin? && !job.publish %>
+      <%= link_to 'Publish', publish_admin_job_path(job), data: {turbo_method: :patch}, class: 'btn btn-success' %>
+    <% end %>
   </div>
 </div>

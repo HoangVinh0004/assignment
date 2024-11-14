@@ -10,8 +10,11 @@ class Job < ApplicationRecord
   validates :job_type, inclusion: { in: job_types.keys }
   validates :description, presence: true
 
-  def self.search(title, job_type)
+  def self.search(title, job_type, not_admin)
     results = Job.all
+    if not_admin
+      results = results.where(publish: true)
+    end
     results = results.where("title LIKE ?", "%#{title}%") if title.present?
     results = results.where(job_type: job_type) if job_type.present?
     results

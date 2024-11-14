@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 
+# Hash password
+gem "bcrypt", "~> 3.1.7"
 # Load file  file -- sassc
 gem "sassc-rails"
 gem "will_paginate", ">= 4.0.0"

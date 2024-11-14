@@ -4,14 +4,20 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ">
         <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
+          <%= link_to "Home", login_path, class: "nav-link", data: { turbo_method: 'post' } %>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Help</a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Admin</a>
-        </li>
+        <% if logged_in? %>
+          <li class="nav-item">
+            <%= link_to 'Logout', logout_path, data: { turbo_method: 'delete' }, class: "nav-link" %>
+          </li>
+        <% else %>
+          <li class="nav-item">
+            <%= link_to "Admin", login_path, class: "nav-link" %>
+          </li>
+        <% end %>
       </ul>
     </div>
   </div>
