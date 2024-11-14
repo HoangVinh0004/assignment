@@ -1,14 +1,13 @@
 class Job < ApplicationRecord
-  # Constants
-  JOB_TYPES = [ "full_time", "part_time", "freelance" ].freeze
-
+  enum :job_type, { full_time: 1, part_time: 2, freelance: 3 }
   # Associations
-  belongs_to :company, optional: true
+  belongs_to :company
+  has_and_belongs_to_many :locations
+  has_many :job_applications
 
   validates :title, presence: true, length: { maximum: 200 }
   validates :company_id, presence: true
-  validates :location, presence: true
-  validates :job_type, presence: true
+  validates :job_type, inclusion: { in: job_types.keys }
   validates :description, presence: true
 
   def self.search(title, job_type)

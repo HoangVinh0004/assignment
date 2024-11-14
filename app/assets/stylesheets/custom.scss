@@ -1,3 +1,37 @@
+$primary: #0d6efd;
+$secondary: #6c757d;
+$font-family-sans-serif: "Roboto", sans-serif;
+
+body {
+  font-family: $font-family-sans-serif;
+  background-color: #f8f9fa;
+  color: #212529;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+}
+
+a {
+  color: $primary;
+  &:hover {
+    color: darken($primary, 10%);
+  }
+}
+
+.container,
+.container-fluid {
+  padding: 1.5rem;
+}
+
+.mt-3 {
+  margin-top: 1rem !important;
+}
 /* pagination */
 .pagination {
   display: flex;
