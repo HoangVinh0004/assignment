@@ -1,5 +1,5 @@
 class JobApplication < ApplicationRecord
-  enum gender: { male: 1, female: 2, other: 3 }
+  enum :gender, { male: 1, female: 2, other: 3 }
   belongs_to :job
 
   validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }

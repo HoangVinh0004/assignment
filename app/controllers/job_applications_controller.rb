@@ -3,7 +3,6 @@ class JobApplicationsController < ApplicationController
   def create
     @job = Job.find(params[:job_id])
     @job_application = @job.job_applications.build(job_application_params)
-
     if @job_application.save
       UserMailer.apply_job(@job, @job_application.email).deliver_now
       flash[:success] = "Application submitted successfully!"

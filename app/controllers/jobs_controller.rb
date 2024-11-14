@@ -1,7 +1,7 @@
 class JobsController < ApplicationController
   def index
     @job_types = Job.job_types.keys
-    puts " title : #{params[:title]}  =  type : #{params[:job_type]}"
+    puts "title : #{params[:title]}  =  type : #{params[:job_type]}"
     @jobs = Job.search(params[:title], params[:job_type]).includes(:company).paginate(page: params[:page], per_page: 3)
   end
 
