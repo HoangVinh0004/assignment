@@ -1,5 +1,3 @@
-require "csv"
-
 class Admin::JobsController < ApplicationController
   DEFAULT_JOB_PER_PAGE = 10
   before_action :admin_user
