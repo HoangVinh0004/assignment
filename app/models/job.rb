@@ -1,20 +1,25 @@
 class Job < ApplicationRecord
-  # Constants
-  JOB_TYPES = [ "full_time", "part_time", "freelance" ].freeze
-
+  MAX_TITLE_LENGTH = 200
+  enum :job_type, { full_time: 1, part_time: 2, freelance: 3 }
   # Associations
-  belongs_to :company, optional: true
+  belongs_to :company
+  has_and_belongs_to_many :locations
+  has_many :job_applications
 
-  validates :title, presence: true, length: { maximum: 200 }
-  validates :company_name, presence: true
-  validates :location, presence: true
-  validates :job_type, presence: true
+  validates :title, presence: true, length: { maximum: MAX_TITLE_LENGTH }
+  validates :company_id, presence: true
+  validates :job_type, inclusion: { in: job_types.keys }
   validates :description, presence: true
 
-  def self.search(title, job_type)
-    results = Job.all
-    results = results.where("title LIKE ?", "%#{title}%") if title.present?
+  def self.search(title, job_type, province, not_admin)
+    results = Job.includes(:company, :locations)
+    results = results.where(publish: true) if not_admin
     results = results.where(job_type: job_type) if job_type.present?
+    results = results.left_joins(:locations).where(locations: { province: province }) if province.present?
+    if title.present?
+      sanitized_title = ApplicationRecord.sanitize_sql_like(title)
+      results = results.where("title LIKE ?", "%#{sanitized_title}%")
+    end
     results
   end
 end

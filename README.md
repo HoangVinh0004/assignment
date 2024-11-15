@@ -13,6 +13,10 @@ Next, migrate the database:
 ```
 $ rails db:migrate
 ```
+Create sample date from file data.csv
+```
+$ rake job:import
+```
 If the test suite passes, you'll be ready to run the app in a local server:
 ```
 $ rails server

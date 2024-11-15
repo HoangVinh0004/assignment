@@ -1,9 +1,9 @@
-<% provide(:title, "Search") %>
+<% provide(:title, "Search Admin") %>
 <div class="container mt-5">
-  <h1 class="text-center mb-4">Recruitment page</h1>
+  <h1 class="text-center mb-4">Recruitment page Admin</h1>
   <div class="card mb-4">
     <div class="card-body">
-      <%= form_with url: jobs_path, method: :get, local: true do |f| %>
+      <%= form_with url: admin_jobs_path, method: :get, local: true do |f| %>
         <div class="row g-3">
           <div class="col-md-2">
             <%= f.label :job_type, "Job Type", class: "form-label" %>

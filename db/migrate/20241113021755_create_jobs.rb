@@ -2,9 +2,8 @@ class CreateJobs < ActiveRecord::Migration[7.2]
   def change
     create_table :jobs do |t|
       t.string :title
-      t.string :company_name
-      t.string :location
-      t.string :job_type
+      t.references :company, null: false, foreign_key: true
+      t.integer :job_type
       t.text :description
 
       t.timestamps
