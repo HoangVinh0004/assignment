@@ -1,7 +1,7 @@
 namespace :job do
   desc "Import data jobs and companies"
   task :import, [ :filename ] => :environment do |t, args|
-    csv_path = Rails.root.join("lib", "assets", args[:filename] || "data.csv")
+    csv_path = Rails.root.join("config", "master_data", args[:filename] || "data.csv")
     importer = ImportJobs.new(csv_path)
     importer.import
     if importer.success?

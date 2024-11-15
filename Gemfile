@@ -1,5 +1,7 @@
 source "https://rubygems.org"
-
+# Bulk import
+gem "ostruct"
+gem "activerecord-import"
 # Hash password
 gem "bcrypt", "~> 3.1.7"
 # Load file  file -- sassc

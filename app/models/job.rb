@@ -16,7 +16,10 @@ class Job < ApplicationRecord
     results = results.where(publish: true) if not_admin
     results = results.where(job_type: job_type) if job_type.present?
     results = results.left_joins(:locations).where(locations: { province: province }) if province.present?
-    results = results.where("title LIKE ?", "%" + results.sanitize_sql_like(title) + "%") if title.present?
+    if title.present?
+      sanitized_title = ApplicationRecord.sanitize_sql_like(title)
+      results = results.where("title LIKE ?", "%#{sanitized_title}%")
+    end
     results
   end
 end

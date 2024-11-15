@@ -36,7 +36,7 @@ ActiveRecord::Schema[7.2].define(version: 2024_11_14_074241) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "publish"
+    t.boolean "publish", default: false
     t.index ["company_id"], name: "index_jobs_on_company_id"
   end
 
