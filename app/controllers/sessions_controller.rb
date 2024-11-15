@@ -1,6 +1,5 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  def new; end
 
   def create
     user = User.find_by(email: params[:email].downcase)
@@ -8,8 +7,8 @@ class SessionsController < ApplicationController
       log_in user
       redirect_to admin_jobs_path
     else
-      flash.now[:danger] = "Login failed"
-      render :new
+      flash[:danger] = "Login failed"
+      redirect_to login_path
     end
   end
 

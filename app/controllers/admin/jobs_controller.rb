@@ -1,12 +1,15 @@
 require "csv"
 
 class Admin::JobsController < ApplicationController
+  DEFAULT_JOB_PER_PAGE = 10
   before_action :admin_user
 
   def index
     @job_types = Job.job_types.keys
+    @locations = Location.distinct.pluck(:province)
     puts "title : #{params[:title]}  =  type : #{params[:job_type]}"
-    @jobs = Job.search(params[:title], params[:job_type], false).includes(:company).paginate(page: params[:page], per_page: 8)
+    @jobs = Job.search(params[:title], params[:job_type], params[:location], false)
+               .paginate(page: params[:page], per_page: DEFAULT_JOB_PER_PAGE)
   end
 
   def publish
@@ -14,7 +17,7 @@ class Admin::JobsController < ApplicationController
     if @job.update(publish: true)
       flash[:success] = "Job has been published successfully."
     else
-      flash[:denger] = "Job has been published failed."
+      flash[:danger] = "Job has been published failed."
     end
     redirect_to admin_jobs_path
   end
@@ -55,6 +58,6 @@ class Admin::JobsController < ApplicationController
   private
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to(root_url) unless admin?
   end
 end

@@ -1,16 +1,16 @@
 <% provide(:title, "Job detail") %>
 <div class="container m-auto">
-  <%= link_to '<- Back to Jobs', jobs_path, class: "btn btn-primary" %>
+  <%= link_to "Back to Jobs", jobs_path, class: "btn btn-primary" %>
   <div class="card mt-4">
     <div class="card-body">
       <h1 class="card-title text-center"><%= @job.title %></h1>
       <p class="card-text"><strong>- Company:</strong> <%= @job.company.name %></p>
-      <p class="card-text"><strong>- Location:</strong> <%= @job.locations.map(&:province).join(', ')%></p>
+      <p class="card-text"><strong>- Location:</strong> <%= @job.locations.map(&:province).join(", ")%></p>
       <p class="card-text"><strong>- Type:</strong> <%= @job.job_type %></p>
       <p class="card-text"><strong>- Description:</strong></p>
       <p class="card-text"><%= @job.description %></p>
       <p class="card-text text-secondary">Posted: <%= time_ago_in_words(@job.created_at)%>  ago </p>
     </div>
   </div>
-  <%= render 'job_applications/apply_form', job: @job, job_application: @job_application %>
+  <%= render "job_applications/apply_form", job: @job, job_application: @job_application %>
 </div>

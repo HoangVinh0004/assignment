@@ -9,7 +9,7 @@ class JobApplicationsController < ApplicationController
     else
       flash[:error] = "Failed to submit application. Please try again."
     end
-    redirect_to request.referrer
+    redirect_to request.referrer || job_path(@job)
   end
 
   private
