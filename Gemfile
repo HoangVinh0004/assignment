@@ -1,4 +1,12 @@
 source "https://rubygems.org"
+# Bulk import
+gem "ostruct"
+gem "activerecord-import"
+# Hash password
+gem "bcrypt", "~> 3.1.7"
+# Load file  file -- sassc
+gem "sassc-rails"
+gem "will_paginate", ">= 4.0.0"
 # cvs
 gem "csv"
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"

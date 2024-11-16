@@ -1,30 +1,13 @@
 class JobsController < ApplicationController
   def index
-    @job_types = Job::JOB_TYPES
-    puts " title : #{params[:title]}  =  type : #{params[:title]}"
-    @jobs = Job.search(params[:title], params[:job_type])
+    @job_types = Job.job_types.keys
+    @locations = Location.distinct.pluck(:province)
+    @jobs = Job.search(params[:title], params[:job_type], params[:location], true)
+               .paginate(page: params[:page], per_page: Admin::JobsController::DEFAULT_JOB_PER_PAGE)
   end
 
   def show
     @job = Job.find(params[:id])
-  end
-
-  def apply
-    @job = Job.find(params[:id])
-    email = params[:email]
-    if email.present?
-      UserMailer.apply_job(@job, email).deliver_now
-      flash[:success] = "Application sent to #{email}!"
-      respond_to do |format|
-        format.html { redirect_to @job }
-        format.js
-      end
-    else
-      flash[:danger] = "Please enter a valid email address."
-      respond_to do |format|
-        format.html { redirect_to @job }
-        format.js
-      end
-    end
+    @job_application = JobApplication.new
   end
 end
